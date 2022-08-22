@@ -23,6 +23,7 @@ $ vagrant ssh
 ```
 vagrant provision
 vagrant reload --provision
+vagrant reload --no-provision
 vagrant ssh-config
 ```
 

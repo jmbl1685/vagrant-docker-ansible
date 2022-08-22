@@ -11,7 +11,20 @@ Vagrant.configure("2") do |config|
     config.winrm.timeout =   1500 
     config.vm.boot_timeout = 1500 
 
-    config.vm.network(:forwarded_port, {:guest=>80, :host=>40080})
-    config.vm.network(:forwarded_port, {:guest=>443, :host=>40443})
+    # for i in 3000..3380
+    #   config.vm.network :forwarded_port, guest: i, host: i, host_ip: "127.0.0.1", auto_correct: true
+    # end
+
+    # Angular
+    config.vm.network :forwarded_port, guest: "4200", host: "4200", host_ip: "127.0.0.1", auto_correct: true
+    # PostreSQL
+    config.vm.network :forwarded_port, guest: "5432", host: "5432", host_ip: "127.0.0.1", auto_correct: true
+    # Redis
+    config.vm.network :forwarded_port, guest: "6379 ", host: "6379 ", host_ip: "127.0.0.1", auto_correct: true
+    
+    # Add your port here
+    config.vm.network :forwarded_port, guest: "3000", host: "3000", host_ip: "127.0.0.1", auto_correct: true
+    config.vm.network :forwarded_port, guest: "3001", host: "3001", host_ip: "127.0.0.1", auto_correct: true
+    config.vm.network :forwarded_port, guest: "7282", host: "7282", host_ip: "127.0.0.1", auto_correct: true
 
   end
