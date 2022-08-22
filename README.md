@@ -27,7 +27,24 @@ vagrant reload --no-provision
 vagrant ssh-config
 ```
 
-### Result sample
+### Result sample via SSH + Visual Studio Code (SSH FS extension)
+
+![image](https://user-images.githubusercontent.com/22874642/186030609-381a2895-dcb0-4b76-bffe-2c1c59a1cd30.png)
+
+![image](https://user-images.githubusercontent.com/22874642/186030688-e911ffca-8165-4860-87e4-7b04215716e0.png)
+
+![image](https://user-images.githubusercontent.com/22874642/186030791-94f6bb8a-5822-4a5b-8960-ec660e9a9768.png)
+
+![image](https://user-images.githubusercontent.com/22874642/186030871-ece80bb5-096a-4aeb-bc3e-0f0da71517a0.png)
+
+![image](https://user-images.githubusercontent.com/22874642/186030934-46fea9d0-5990-4aab-883f-21bd49c16e97.png)
+
+![image](https://user-images.githubusercontent.com/22874642/186030973-31cbb11e-5e7f-4ab2-8a82-6631d96a440b.png)
+
+![image](https://user-images.githubusercontent.com/22874642/186031093-b4e87dfe-193a-427f-a443-195c51e44aba.png)
+
+
+### Result sample via SSH
 
 ```
 $> vagrant up
