@@ -34,8 +34,7 @@
         sudo apt update;
         sudo apt-cache policy docker-ce;
         sudo apt install docker-ce -y;
-        sudo /etc/init.d/docker start;
-
+        # sudo /etc/init.d/docker start;
         # from WSL manual
         # sudo curl -O https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/docker-ce_17.09.0~ce-0~debian_amd64.deb
         # sudo apt install libltdl7 -y
