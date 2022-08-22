@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
     # Angular
     config.vm.network :forwarded_port, guest: "4200", host: "4200", host_ip: "127.0.0.1", auto_correct: true
-    # PostreSQL
+    # PostgreSQL
     config.vm.network :forwarded_port, guest: "5432", host: "5432", host_ip: "127.0.0.1", auto_correct: true
     # Redis
     config.vm.network :forwarded_port, guest: "6379 ", host: "6379 ", host_ip: "127.0.0.1", auto_correct: true
