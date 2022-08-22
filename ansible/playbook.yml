@@ -1,0 +1,57 @@
+---
+- name: Ansible tasks
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Run apt-get updates/upgrades
+      shell: |
+        sudo apt-get update
+        sudo apt-get upgrade -y
+    - name: Install node.js
+      shell: |
+        cd ~
+        curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+        nano /tmp/nodesource_setup.sh
+        sudo bash /tmp/nodesource_setup.sh
+        sudo apt install nodejs
+        sudo node -v
+    - name: Install ASPNET core 6 (.NET 6)
+      shell: |
+        sudo wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb 
+        sudo dpkg -i packages-microsoft-prod.deb 
+        sudo apt install apt-transport-https 
+        sudo apt update
+        sudo apt install dotnet-sdk-6.0 -y
+        sudo apt install apt-transport-https 
+        sudo apt update 
+        sudo apt install dotnet-runtime-6.0 -y
+        sudo dotnet --version
+    - name: Install docker
+      shell: |
+        sudo apt-get install curl apt-transport-https ca-certificates software-properties-common -y;
+        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -;
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable";
+        sudo apt update;
+        sudo apt-cache policy docker-ce;
+        sudo apt install docker-ce -y;
+        sudo /etc/init.d/docker start;
+
+        # from WSL manual
+        # sudo curl -O https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/docker-ce_17.09.0~ce-0~debian_amd64.deb
+        # sudo apt install libltdl7 -y
+        # sudo dpkg -i docker-ce_17.09.0\~ce-0\~debian_amd64.deb
+        # sudo /etc/init.d/docker start
+    - name: Install nginx
+      shell: |
+        sudo apt install nginx -y
+        sudo ufw app list
+        sudo ufw allow 'Nginx HTTP'
+        sudo ufw status
+        sudo ip addr show eth0 | grep inet | awk '{ print $2 }' | sed 's/\/.*$//'
+        sudo systemctl start nginx
+        sudo systemctl enable nginx
+        sudo /etc/init.d/nginx start
+    - name: Add folder permissions
+      shell: |
+        sudo chown -R $USER:$USER /home/
+        sudo sysctl fs.inotify.max_user_watches=582222 && sudo sysctl -p
