@@ -19,8 +19,9 @@ jobs:
     - name: Show Vagrant version
       run: vagrant --version
 
+    - uses: actions/checkout@v2
     - name: Run vagrant up
-      run: vagrant up
+      run: vagrant up --provider=docker
 
     - name: ssh into box after boot
       run: vagrant ssh -c "echo 'just testing!'"
